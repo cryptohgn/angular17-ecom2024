@@ -1,0 +1,19 @@
+.star-rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star {
+    cursor: pointer;
+    font-size: 1.5rem; // Ajusta el tamaño de las estrellas según tus necesidades
+    color: #ffca28; // Color amarillo para las estrellas
+  }
+  
+  .star.filled {
+    color: #ffca28; // Color de las estrellas rellenadas
+  }
+  
+  .star:hover {
+    transform: scale(1.2); // Aumenta el tamaño al pasar el mouse
+  }
+  

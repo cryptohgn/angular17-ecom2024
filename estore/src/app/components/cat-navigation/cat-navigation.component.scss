@@ -1,0 +1,33 @@
+@import "../../../styles.scss";
+
+
+.catnav-container{
+    max-width: 100%;
+    background-color: $third-color;
+    //border-top: 1px solid black;
+    ul {
+        margin-left: 4em;
+        margin-bottom: 2em;
+        padding-bottom: 1em;
+        padding-top: 0.5em;
+
+        li {
+        list-style: none;
+        display: inline-block;
+        margin: .2em 1em;
+        padding: .4em;
+        height: 2.5em;
+        letter-spacing: 0.25em;
+
+
+            a {
+            text-decoration: none;
+            color: white;
+            height: 1.8em;
+            font-size: 1.2em;
+            font-weight: 300;
+            @include underline-transition(1.1)
+            }
+        }
+    }
+}

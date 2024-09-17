@@ -1,0 +1,8 @@
+<div class="catnav-container">
+    <ul>
+        <li><a href="javascript:void(0)">Home</a></li>
+        <li *ngFor="let category of topLevelCategories$ | async"> 
+            <a href="javascript:void(0)">{{ category.category }}</a>
+        </li>
+    </ul>
+</div>

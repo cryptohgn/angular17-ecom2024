@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Nerko+One&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a {
+    text-decoration: none;
+}
+$third-color:  rgb(111, 125, 137);
+$second-color:  rgb(210, 158, 38);
+
+    @mixin underline-transition($width) {
+        &::after {
+            content: '';
+            display: block;
+            bottom: 0;
+            left: 0;
+            height: 0.2em;
+            background-color:$second-color;
+            transform: scaleX(0);
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+    
+        &:hover {
+            &::after {
+                transform: scaleX($width);
+            }
+        }
+    }

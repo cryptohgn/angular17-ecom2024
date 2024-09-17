@@ -1,0 +1,21 @@
+<div class="sideNav">
+    <div class="section-title">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle *ngFor="let mainCategory of getCategories(); let i = index">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ mainCategory.category }} </mat-panel-title>
+          </mat-expansion-panel-header>
+
+            <div
+              *ngFor="let subCategory of getCategories(mainCategory.id)" class="individual-category">
+              <mat-expansion-panel-header class="sub-items">
+              <a href="#">{{ subCategory.category }} </a> 
+              </mat-expansion-panel-header>
+           
+          </div>
+  
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+  

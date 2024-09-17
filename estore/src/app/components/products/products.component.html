@@ -1,0 +1,15 @@
+<div class="main-product-container">
+    <div *ngFor = 'let product of products' class="mx-5 p-3 product-card">
+        <div class="product-image-container">
+            <img [src]="'../../../assets/images/' + product.product_img + '.jpg'">   
+        </div>
+        <div class="product-info">
+            <h5><strong><a href="#">{{product.product_name}}</a></strong></h5>
+            <p class="product-price">{{product.price | currency }}</p>
+            <app-star-rating 
+                [ratings]="product.ratings" 
+                (ratingUpdated)="onRatingUpdated($event, product)">
+            </app-star-rating>
+        </div>
+    </div>
+</div>

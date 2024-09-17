@@ -1,0 +1,12 @@
+<div class="star-rating">
+  <ng-container *ngFor="let star of [].constructor(starCount); let i = index">
+    <mat-icon
+      class="star"
+      [class.filled]="(i + 1) <= (hoverState || ratings)"
+      (click)="rate(i + 1)"
+      (mouseover)="setHoverState(i + 1)"
+      (mouseleave)="resetHoverState()">
+      {{ (i + 1) <= (hoverState || ratings) ? 'star' : 'star_outline' }} <!-- Aquí se define el ícono -->
+    </mat-icon>
+  </ng-container>
+</div>
