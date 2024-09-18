@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ProductListItems } from '../components/products/product.types';
-import { products } from './../components/products/product.data';
+import { Product } from '../components/products/product.types';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductsService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {
 
-  getProdcutList(): ProductListItems[] | any {
-    return products
+   }
+
+  getAllProdcuts(): Observable<Product[] | any> {
+    return  this.httpClient.get<Product[]>('http://localhost:5001/products/')
 
   }
 }

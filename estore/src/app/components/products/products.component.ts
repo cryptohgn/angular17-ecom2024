@@ -1,6 +1,6 @@
+import { ProductsService } from './../../services/products.service';
 import { Component, inject } from '@angular/core';
-import { ProductsService } from '../../services/products.service';
-import { ProductListItems } from './product.types';
+import { Product } from './product.types';
 import { NgFor, CurrencyPipe } from '@angular/common';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 
@@ -13,18 +13,17 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
   providers: [ProductsService]
 })
 export class ProductsComponent {
-  products: ProductListItems[] = [];
+  products: Product[] = [];
 
-  productService = inject(ProductsService);
 
-  constructor() {
-    this.products = this.productService.getProdcutList();
+  constructor( private productsService : ProductsService  ) {
+    productsService.getAllProdcuts().subscribe(products => this.products = products) 
   }
 
-  // Manejar la actualización del rating
-  onRatingUpdated(newRating: number, product: ProductListItems) {
+
+  onRatingUpdated(newRating: number, product: Product) {
     product.ratings = newRating;
     console.log(`Nueva calificación para ${product.product_name}: ${newRating}`);
-    // Aquí puedes agregar lógica para actualizar la calificación en una base de datos, si es necesario
+    
   }
 }
