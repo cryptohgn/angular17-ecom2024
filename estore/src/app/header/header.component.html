@@ -7,9 +7,9 @@
         <div class="search">
             <div class="mx-5">
                 <select class="dropdown p-2">
-                    <option value="">Men</option>
-                    <option value="">Women</option>
-                    <option value="">Kids</option>
+                    <option *ngFor="let category of categoryStore.topLevelCategories$ | async">
+                        {{category.category}}
+                    </option>
                 </select>
     
             </div>
