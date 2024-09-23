@@ -9,7 +9,7 @@
             <div
               *ngFor="let subCategory of getCategories(mainCategory.id)" class="individual-category">
               <mat-expansion-panel-header class="sub-items">
-              <a href="#">{{ subCategory.category }} </a> 
+              <a (click)="onSubCategoryClicked(subCategory)">{{ subCategory.category }} </a> 
               </mat-expansion-panel-header>
            
           </div>

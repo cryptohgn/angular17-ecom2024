@@ -1,10 +1,11 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { CategoryService } from './services/category.service';
+import { CategoryService } from './components/category/category.service';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { ProductsService } from './services/products.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
@@ -13,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(), 
     provideHttpClient(withFetch()), 
     provideAnimationsAsync(),
-    CategoryService
+    CategoryService,
+    ProductsService
   ]
 };

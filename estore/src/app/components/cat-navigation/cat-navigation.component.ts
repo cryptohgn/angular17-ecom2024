@@ -1,5 +1,5 @@
 import { Category } from './../../types/category.type';
-import { CategoryStoreItem } from './../../share/categoryStoreItems';
+import { CategoryStoreItem } from '../category/categoryStoreItems';
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { AsyncPipe } from '@angular/common';

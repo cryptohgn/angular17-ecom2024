@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon'
-import { CategoryStoreItem } from '../share/categoryStoreItems';
+import { CategoryStoreItem } from '../components/category/categoryStoreItems';
 import { NgFor } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
 @Component({

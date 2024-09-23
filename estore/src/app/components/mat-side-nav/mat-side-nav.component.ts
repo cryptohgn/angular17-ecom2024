@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, signal, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, Output, EventEmitter  } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { CategoryStoreItem } from '../../share/categoryStoreItems';
+import { CategoryStoreItem } from '../category/categoryStoreItems';
 import { Category } from './../../types/category.type';
 import { NgFor } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./mat-side-nav.component.scss'] 
 })
 export class MatSideNavComponent implements OnDestroy {
-  
+  @Output() 
+  subCategoryClicked: EventEmitter<number> = new EventEmitter<number>() 
+
   categories: Category[] = [];
   subscriptions: Subscription = new Subscription(); 
 
@@ -34,6 +36,9 @@ export class MatSideNavComponent implements OnDestroy {
       );
     }
   
+    onSubCategoryClicked(subCategory: Category) :  void{
+      this.subCategoryClicked.emit(subCategory.id)
+    }
     ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
     }

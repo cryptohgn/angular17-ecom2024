@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { StoreItem } from './storeItem';
-import { CategoryService } from '../services/category.service';
-import { Category } from '../types/category.type';
+import { StoreItem } from '../../share/storeItem';
+import { CategoryService } from './category.service';
+import { Category } from '../../types/category.type';
 import { Observable, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })

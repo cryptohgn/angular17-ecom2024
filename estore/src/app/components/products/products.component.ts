@@ -1,23 +1,23 @@
-import { ProductsService } from './../../services/products.service';
+import { ProductStoreItem } from './productStoreItme';
 import { Component, inject } from '@angular/core';
 import { Product } from './product.types';
-import { NgFor, CurrencyPipe } from '@angular/common';
+import { NgFor, CurrencyPipe, AsyncPipe } from '@angular/common';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [NgFor, CurrencyPipe, StarRatingComponent],
+  imports: [NgFor, CurrencyPipe, StarRatingComponent, AsyncPipe],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  providers: [ProductsService]
+
 })
 export class ProductsComponent {
   products: Product[] = [];
 
 
-  constructor( private productsService : ProductsService  ) {
-    productsService.getAllProdcuts().subscribe(products => this.products = products) 
+  constructor( public productStore : ProductStoreItem  ) {
+    
   }
 
 

@@ -10,8 +10,12 @@ export class ProductsService {
 
    }
 
-  getAllProdcuts(): Observable<Product[] | any> {
-    return  this.httpClient.get<Product[]>('http://localhost:5001/products/')
+   getAllProducts(query?: string): Observable<Product[] | any> {
+    let url: string = 'http://localhost:5001/products';
+    if (query){
+      url += '?' + query
+    }
+    return  this.httpClient.get<Product[]>(url)
 
   }
 }
