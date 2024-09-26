@@ -6,15 +6,15 @@
         
         <div class="search">
             <div class="mx-5">
-                <select class="dropdown p-2">
-                    <option value="" class="optionSelect p-2 my-3 rounded">Men</option>
-                    <option value="" class="optionSelect p-2 my-3 rounded">Women</option>
-                    <option value="" class="optionSelect p-2 my-3 rounded">Kids</option>
+                <select #categoryOptions class="dropdown p-2">
+                    <option *ngFor="let category of categoryStoreItem.topLevelCategories$ | async" 
+                    value="{{category.id}}"> 
+                       {{ category.category }}
+                     </option>                     
                 </select>
-    
             </div>
-            <input type="text" class="form-control search-box" placeholder="Search...">
-            <button class="search-button">Search <span class="icon-search"><mat-icon>search</mat-icon></span>
+            <input #keyword type="text" class="form-control search-box" placeholder="Search...">
+            <button class="search-button">Search <span class="icon-search" (click)="onSearchClicked(keyword.value, categoryOptions.value)"><mat-icon>search</mat-icon></span>
                 </button>
         </div>
         <div class="login-container p-0">

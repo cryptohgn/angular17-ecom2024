@@ -6,6 +6,7 @@ import { CatNavigationComponent } from '../cat-navigation/cat-navigation.compone
 import { ProductsComponent } from '../products/products.component';
 import { CategoryStoreItem } from '../category/categoryStoreItems';
 import { ProductStoreItem } from '../products/productStoreItme';
+import { SearchKeyword } from '../../types/searchKeyword.type';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,12 @@ import { ProductStoreItem } from '../products/productStoreItme';
   styleUrl: './home.component.scss',
   providers: [ProductStoreItem]
 })
+
 export class HomeComponent {
   constructor(  categoriesStoreItem: CategoryStoreItem, private productStoreItem: ProductStoreItem){
     categoriesStoreItem.loadCategories();
     productStoreItem.loadProducts();
+    
   }
 
   onSelectCategory(categoryId: number | any): void{
@@ -27,5 +30,9 @@ export class HomeComponent {
 
   onSelectSubCategory(subCategoryId: number): void{
     this.productStoreItem.loadProducts('subcategoryid=' + subCategoryId)
+  }
+
+  onSearchKeyword(searhkeyword: SearchKeyword): void{
+    this.productStoreItem.loadProducts('maincategoryid=' + searhkeyword.categoryId + '&keyword=' + searhkeyword.keyword)
   }
 }
