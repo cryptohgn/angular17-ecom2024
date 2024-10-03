@@ -7,11 +7,12 @@ import { ProductsComponent } from '../products/products.component';
 import { CategoryStoreItem } from '../category/categoryStoreItems';
 import { ProductStoreItem } from '../products/productStoreItme';
 import { SearchKeyword } from '../../types/searchKeyword.type';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent,CatNavigationComponent,MatSideNavComponent, ProductsComponent ],
+  imports: [HeaderComponent,CatNavigationComponent,MatSideNavComponent, ProductsComponent, RouterOutlet ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   providers: [ProductStoreItem]
@@ -26,10 +27,6 @@ export class HomeComponent {
 
   onSelectCategory(categoryId: number | any): void{
     this.productStoreItem.loadProducts('maincategoryid=' + categoryId)
-  }
-
-  onSelectSubCategory(subCategoryId: number): void{
-    this.productStoreItem.loadProducts('subcategoryid=' + subCategoryId)
   }
 
   onSearchKeyword(searhkeyword: SearchKeyword): void{

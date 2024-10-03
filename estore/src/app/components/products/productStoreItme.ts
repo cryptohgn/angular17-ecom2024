@@ -11,7 +11,6 @@ export class ProductStoreItem extends StoreItem<Product[]>{
         super([])
     }
 
-
     async loadProducts(query?: string) {
         this.productService.getAllProducts(query).subscribe((products)=>
         this.setValue(products))

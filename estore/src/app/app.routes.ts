@@ -1,11 +1,22 @@
-import { Routes } from '@angular/router';
-import path from 'path';
+import { Routes  } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductsGalleryComponent } from './components/products-gallery/products-gallery.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
-    {path: '**', component: NotFoundComponent}
+    {path: 'home', component: HomeComponent,
+      children: [{
+        path: 'products',
+        loadComponent: () => import('./components/products-gallery/products-gallery.component').then(m => m.ProductsGalleryComponent),
+      },
+      {
+        path: 'product',
+        loadComponent: () => import('./components/product-detail/product-detail.component').then(m => m.ProductDetailComponent),
+      } ]
+    },
+    {path: '', redirectTo: '/home/products', pathMatch: 'full'},
+    {path: '**', component: NotFoundComponent},
+    
 
 ];

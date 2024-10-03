@@ -37,6 +37,8 @@ export class HeaderComponent {
     })
   }
   
-  
+  goToHome() {
+    window.location.reload() 
+  }
   
 }

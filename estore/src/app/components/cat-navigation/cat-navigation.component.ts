@@ -31,6 +31,10 @@ export class CatNavigationComponent {
   onCategoryClick(category: Category): void{
     this.categoryClicked.emit(category.id)
   }
+
+  goToHome() {
+    window.location.reload() 
+  }
 }
 
   
