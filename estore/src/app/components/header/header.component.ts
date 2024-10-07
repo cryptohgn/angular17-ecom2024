@@ -5,6 +5,8 @@ import { NgFor, AsyncPipe } from '@angular/common';
 import { SearchKeyword } from '../../types/searchKeyword.type';
 import { Observable } from 'rxjs';
 import { Category } from '../../types/category.type';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +21,12 @@ export class HeaderComponent {
 
   topLevelCategories$: Observable<Category[]>;
 
-  constructor(public categoryStoreItem: CategoryStoreItem) {
+  
+  constructor(public categoryStoreItem: CategoryStoreItem, private router: Router) {
+    router.events.pipe(filter(event =>event instanceof NavigationEnd))
+    .subscribe( event => {
+
+    })
     
     categoryStoreItem.loadCategories();
     
