@@ -1,7 +1,7 @@
 <div class="catnav-container">
     <ul>
-        <li><a (click)="goToHome()">Home</a></li>
-        <ng-container *ngIf="displayOption">
+        <li><a routerLink="/home/products">Home</a></li>
+        <ng-container *ngIf="displayOptions">
         <li *ngFor="let category of categoryStoreItem.topLevelCategories$ | async"> 
             <a (click)="onCategoryClick(category)">{{ category.category }}</a>
         </li>

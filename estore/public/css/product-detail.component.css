@@ -1,0 +1,35 @@
+import .main-product-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-self: center;
+}
+
+.productCardInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+.featured-image {
+  align-self: center;
+}
+
+.product-info {
+  width: 45%;
+}
+
+.btnBuy {
+  background-color: rgb(210, 158, 38);
+  text-decoration: none;
+}

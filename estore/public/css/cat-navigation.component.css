@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&family=Nerko+One&display=swap");
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.catnav-container {
+  max-width: 100%;
+  background-color: rgb(111, 125, 137);
+}
+.catnav-container ul {
+  margin-left: 4em;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  padding-top: 0.5em;
+}
+.catnav-container ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0.2em 1em;
+  padding: 0.4em;
+  height: 2.5em;
+  letter-spacing: 0.25em;
+}
+.catnav-container ul li a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  height: 1.8em;
+  font-size: 1.2em;
+  font-weight: 300;
+}
+.catnav-container ul li a::after {
+  content: "";
+  display: block;
+  bottom: 0;
+  left: 0;
+  height: 0.2em;
+  background-color: rgb(210, 158, 38);
+  transform: scaleX(0);
+  transition-property: transform;
+  transition-duration: 0.2s;
+}
+.catnav-container ul li a:hover::after {
+  transform: scaleX(1.1);
+}

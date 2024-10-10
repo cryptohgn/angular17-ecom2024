@@ -1,0 +1,13 @@
+.nf-container {
+  height: 100vh;
+}
+
+p {
+  text-align: center;
+}
+
+.icon-display {
+  transform: scale(10);
+  color: rgb(231, 203, 181);
+  z-index: 0;
+}

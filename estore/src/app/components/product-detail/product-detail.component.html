@@ -1,25 +1,23 @@
-<div class="main-product-container">
+
+<div class="main-product-container" *ngIf="product$ | async as product">
   <mat-card class="card text-center w-50" appearance="outlined">
     <div class="productCardInfo">
         <div class="featured-image mx-5">
-          <img mat-card-image class="my-3 rounded-2 " [src]="'../../../assets/images/shop-1.jpg'" alt="Photo of a Shiba Inu">
+          <img mat-card-image class="my-3 rounded-2 " [src]="'../../../assets/images/' + product.product_img" alt="product.product_name">
         </div>
       <div class="product-info">
       <mat-card-header>
-        <mat-card-title class="mr-3">Product Name</mat-card-title>
-        <mat-card-subtitle>Women</mat-card-subtitle>
+        <mat-card-title class="mr-3">{{product.product_name}}</mat-card-title>
       </mat-card-header>
       <mat-card-content class="my-2">
         <p>
-          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-          bred for hunting.
+         {{product.product_description}}
         </p>
       </mat-card-content>
       <mat-card-footer class="text-right my-5 pb-5 px-3">
-          <strong>Price:</strong> <span class="price mx-2">$45</span>
+          <strong>Price:</strong> <span class="price mx-2">{{product.price}}</span>
       </mat-card-footer>
-      <app-star-rating class="mx-3 my-5 px-5 text-right" [ratings]="4"></app-star-rating>
+      <app-star-rating class="mx-3 my-5 px-5 text-right" [ratings]='product.ratings'></app-star-rating>
       <mat-card-actions class="ml-5">
         <button mat-button class="rounded-3 px-2 btnBuy mx-3">BUY</button>
         <button mat-button class="mx-3">LIKE</button>

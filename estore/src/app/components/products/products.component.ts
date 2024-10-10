@@ -16,11 +16,9 @@ import { RouterLink } from '@angular/router';
 export class ProductsComponent {
   products: Product[] = [];
 
-
   constructor( public productStore : ProductStoreItem  ) {
     
   }
-
 
   onRatingUpdated(newRating: number, product: Product) {
     product.ratings = newRating;

@@ -5,13 +5,13 @@ import { NgFor, AsyncPipe } from '@angular/common';
 import { SearchKeyword } from '../../types/searchKeyword.type';
 import { Observable } from 'rxjs';
 import { Category } from '../../types/category.type';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIconModule,NgFor, AsyncPipe],
+  imports: [MatIconModule,NgFor, AsyncPipe, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   providers: [CategoryStoreItem]
@@ -21,12 +21,9 @@ export class HeaderComponent {
 
   topLevelCategories$: Observable<Category[]>;
 
+  displayOptions: boolean = true;
   
-  constructor(public categoryStoreItem: CategoryStoreItem, private router: Router) {
-    router.events.pipe(filter(event =>event instanceof NavigationEnd))
-    .subscribe( event => {
-
-    })
+  constructor(public categoryStoreItem: CategoryStoreItem) {    
     
     categoryStoreItem.loadCategories();
     
