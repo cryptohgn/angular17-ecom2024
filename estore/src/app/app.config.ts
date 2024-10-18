@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ProductsService } from './services/products.service';
+import { CartStoreItem } from './services/cart/cart.storItem';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
@@ -15,7 +16,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()), 
     provideAnimationsAsync(),
     CategoryService,
-    ProductsService
+    ProductsService,
+    CartStoreItem
   ]
 };
 

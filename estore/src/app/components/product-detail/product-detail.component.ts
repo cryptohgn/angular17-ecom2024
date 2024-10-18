@@ -9,22 +9,24 @@ import { ProductsService } from '../../services/products.service';
 import { Observable, Subscription } from 'rxjs';
 import { Product } from '../products/product.types';
 import { map } from 'rxjs/operators';
-
+import { MatIconModule } from '@angular/material/icon'
+import { CartStoreItem } from '../../services/cart/cart.storItem';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, StarRatingComponent, NgIf, AsyncPipe],
+  imports: [MatCardModule, MatButtonModule, StarRatingComponent, NgIf, AsyncPipe, MatIconModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [ProductStoreItem, ProductsService]
+  providers: [ProductStoreItem, ProductsService, CartStoreItem]
 })
 export class ProductDetailComponent implements OnInit {
   product$: Observable<Product>;
   subscriptions: Subscription = new Subscription();
 
-  constructor( private activatedRoute: ActivatedRoute, private productService: ProductsService ) {}
+  constructor( private activatedRoute: ActivatedRoute, private productService: ProductsService, private cart: CartStoreItem ) {}
+
   ngOnInit(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     if (id) {
@@ -32,7 +34,10 @@ export class ProductDetailComponent implements OnInit {
         map(products => products[0])  // Seleccionamos el primer producto del array
       );
     }
-    
-
+  }
+  
+  addToCart(product: Product): void {
+    this.cart.addProduct(product); 
+    console.log(product);
   }
 }

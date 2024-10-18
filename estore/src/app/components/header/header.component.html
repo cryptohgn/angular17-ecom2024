@@ -25,10 +25,17 @@
                 </div>
             </div>
             <div>
-                <ul class="m-b5 d-sm-inline-flex">
-                    <li class="user-icon mx-2"><mat-icon>favorite</mat-icon></li>
-                    <li class="user-icon mx-2"><mat-icon>shopping_cart</mat-icon></li>
-                </ul>
+                <div class="m-b5 d-sm-inline-flex">
+                    <li class="user-icon mx-2"><mat-icon>favorite</mat-icon>
+                    <button class="btn btn-dark position-relative mb-2">
+                    <mat-icon class="user-icon mx-2">shopping_cart</mat-icon>
+                    <ng-container *ngIf="cartStore.cart$ | async as cart">
+                        <span *ngIf="cart.totalProducts > 0" class="position-absolute top-0 translate-middle badge rounded-pill">
+                            {{cart.totalProducts}}
+                        </span>
+                    </ng-container>
+                    </button>
+                
             </div>
         </div>
     </div>

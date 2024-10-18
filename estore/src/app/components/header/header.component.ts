@@ -1,20 +1,21 @@
 import { CategoryStoreItem } from './../category/categoryStoreItems';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon'
-import { NgFor, AsyncPipe } from '@angular/common';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
 import { SearchKeyword } from '../../types/searchKeyword.type';
 import { Observable } from 'rxjs';
 import { Category } from '../../types/category.type';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { filter } from 'rxjs';
+import {  RouterModule } from '@angular/router';
+import { CartStoreItem } from '../../services/cart/cart.storItem';
+
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIconModule,NgFor, AsyncPipe, RouterModule],
+  imports: [MatIconModule,NgFor, NgIf,AsyncPipe, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  providers: [CategoryStoreItem]
+  providers: [CategoryStoreItem, CartStoreItem]
 })
 
 export class HeaderComponent {
@@ -23,7 +24,7 @@ export class HeaderComponent {
 
   displayOptions: boolean = true;
   
-  constructor(public categoryStoreItem: CategoryStoreItem) {    
+  constructor(public categoryStoreItem: CategoryStoreItem, public cartStore:CartStoreItem ) {    
     
     categoryStoreItem.loadCategories();
     

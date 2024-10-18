@@ -1,6 +1,6 @@
 <div class="main-product-container">
     <div *ngFor = 'let product of productStore.products$ | async' class="mx-5 p-3 product-card">
-        <div class="product-image-container">
+        <div class="product-image-container text-center">
             <a routerLink="../product/{{product.id}}">
             <img [src]="'../../../assets/images/' + product.product_img" alt="">
             </a>   
@@ -13,5 +13,11 @@
                 (ratingUpdated)="onRatingUpdated($event, product)">
             </app-star-rating>
         </div>
+        <mat-card-actions class="text-center">
+            <button mat-button id="1" class="rounded-3 px-3 btnBuy mx-3" (click)="addToCart(product)">Add to Cart <mat-icon>shopping_cart</mat-icon></button>
+            <button mat-button class="mx-1"> <mat-icon>favorite</mat-icon></button>
+            <button mat-button class="mx-1"><mat-icon>share</mat-icon></button>
+          </mat-card-actions>
+    
     </div>
 </div>

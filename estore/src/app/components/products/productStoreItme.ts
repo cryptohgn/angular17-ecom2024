@@ -3,11 +3,13 @@ import { StoreItem } from "../../share/storeItem";
 import { ProductsService } from '../../services/products.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { CartStoreItem } from '../../services/cart/cart.storItem';
+
 
 @Injectable()
 export class ProductStoreItem extends StoreItem<Product[]>{
 
-    constructor(private productService: ProductsService){
+    constructor(private productService: ProductsService, private cart: CartStoreItem){
         super([])
     }
 
@@ -19,4 +21,8 @@ export class ProductStoreItem extends StoreItem<Product[]>{
     get products$(): Observable<Product[]> {
         return this.value$
     } 
+
+    addToCart(product: Product): void{
+        this.cart.addProduct(product)
+    }
 }

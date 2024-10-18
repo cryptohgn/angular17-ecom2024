@@ -1,5 +1,6 @@
 
 <div class="main-product-container" *ngIf="product$ | async as product">
+  <ng-container *ngIf="product">
   <mat-card class="card text-center w-50" appearance="outlined">
     <div class="productCardInfo">
         <div class="featured-image mx-5">
@@ -19,11 +20,12 @@
       </mat-card-footer>
       <app-star-rating class="mx-3 my-5 px-5 text-right" [ratings]='product.ratings'></app-star-rating>
       <mat-card-actions class="ml-5">
-        <button mat-button class="rounded-3 px-2 btnBuy mx-3">BUY</button>
+        <button mat-button class="rounded-3 px-2 btnBuy mx-3" (click)="addToCart(product)">Add to Cart <mat-icon>shopping_cart</mat-icon></button>
         <button mat-button class="mx-3">LIKE</button>
         <button mat-button class="mx-3">SHARE</button>
       </mat-card-actions>
     </div>  
    </div>
   </mat-card>   
+</ng-container>
   </div>
