@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [NgFor, CurrencyPipe, StarRatingComponent, AsyncPipe, RouterLink, MatCardActions, MatIconModule, MatButtonModule],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
-  providers: [CartStoreItem]
+  providers: []
 })
 export class ProductsComponent {
   products: Product[] = [];

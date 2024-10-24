@@ -10,6 +10,27 @@ $search-bar-border: none;
     margin: 0.05%;
 }
 
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: rgb(210, 158, 38); /* Fondo dorado */
+    color: black; /* Texto negro */
+    border-radius: 50%; /* Hace el círculo */
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 24px; /* Mínimo ancho para asegurar que sea un círculo */
+    height: 24px; /* Altura fija para mantener la proporción */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin: .3em;
+    padding: .2em;
+  }
+
+
 .brand {
     color: rgb(210, 158, 38);
     margin-left: 5%;

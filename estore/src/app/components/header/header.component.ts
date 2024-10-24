@@ -15,7 +15,7 @@ import { CartStoreItem } from '../../services/cart/cart.storItem';
   imports: [MatIconModule,NgFor, NgIf,AsyncPipe, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
-  providers: [CategoryStoreItem, CartStoreItem]
+  providers: [CategoryStoreItem, ]
 })
 
 export class HeaderComponent {

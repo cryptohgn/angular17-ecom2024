@@ -1,11 +1,19 @@
 
 import { Cart, CartItem } from '../../types/cart.type';
 import { Product } from '../../components/products/product.types';
-import { Observable } from 'rxjs';
+import { Observable,BehaviorSubject  } from 'rxjs';
 import { StoreItem } from '../../share/storeItem';
+
+import { Injectable } from '@angular/core';
+
+
+@Injectable({
+  providedIn: 'root',  // Aseguramos que el servicio sea singleton y accesible globalmente
+})
 
 
 export class CartStoreItem extends StoreItem<Cart> {
+  private cartSubject: BehaviorSubject<Cart>;
   constructor() {
     super({
       products: [],
