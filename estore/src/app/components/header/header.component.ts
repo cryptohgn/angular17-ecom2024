@@ -5,9 +5,8 @@ import { NgFor, NgIf, AsyncPipe } from '@angular/common';
 import { SearchKeyword } from '../../types/searchKeyword.type';
 import { Observable } from 'rxjs';
 import { Category } from '../../types/category.type';
-import {  RouterModule } from '@angular/router';
+import {  Router, RouterModule } from '@angular/router';
 import { CartStoreItem } from '../../services/cart/cart.storItem';
-
 
 @Component({
   selector: 'app-header',
@@ -24,7 +23,7 @@ export class HeaderComponent {
 
   displayOptions: boolean = true;
   
-  constructor(public categoryStoreItem: CategoryStoreItem, public cartStore:CartStoreItem ) {    
+  constructor(public categoryStoreItem: CategoryStoreItem, public cartStore:CartStoreItem, public router: Router ) {    
     
     categoryStoreItem.loadCategories();
     
@@ -42,8 +41,8 @@ export class HeaderComponent {
     })
   }
   
-  goToHome() {
-    window.location.reload() 
+  navigateToCart(): void{
+    this.router.navigate(['home/cart'])
   }
   
 }
