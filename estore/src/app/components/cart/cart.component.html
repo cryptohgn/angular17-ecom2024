@@ -34,9 +34,8 @@
                   </div>
                   <div class="btn">{{ cartItem.quantity }}</div>
                   <div class="btn btn-outline-dark">
-                    <span> + </span>
+                    <span class="mt-4"> + </span>
                   </div>
-                
                 <div class="btn btn-outline-danger mx-4 px-3" (click)="removeItem(cartItem)">
                     <span><mat-icon class="mt-1 p-1 mx-2">delete</mat-icon>Remove Item</span>
                 </div>
@@ -44,8 +43,22 @@
             </div>
             <hr/>
         </div>
+    </div>   
+  </div>
+  <div class="row">
+  <div class="col-4 px-4 py-3 my-4 cart-summary" *ngIf="cartStore.cart.products.length">
+    <h2 class="mb-5 mt-3">Summary</h2>
+    <div>
+      <span> Cart Total : {{ cart.totalAmount | currency }} </span>
+      <span> Shipping Charges : Free </span>
+      <hr />
+      <span class="summary-total">
+        Total : {{ cart.totalAmount | currency }}
+      </span>
+      <hr />
     </div>
-                           
-    </div>
-
+    <div class="btn btn-outline-dark w-100 mb-4 mt-1">Checkout</div>
+  </div>
+</div>        
+</div>
   
