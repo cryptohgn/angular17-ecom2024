@@ -38,7 +38,6 @@ updateQuantity($even: any, cartItem: CartItem ): void{
 
 removeItem(cartItem: CartItem): void{
   this.cartStore.removeProduct(cartItem);
-
 }
 
 }
