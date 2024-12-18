@@ -1,13 +1,17 @@
-
-import { MatSideNavComponent } from './../mat-side-nav/mat-side-nav.component';
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
+import { MatSideNavComponent } from './../mat-side-nav/mat-side-nav.component';
 import { CatNavigationComponent } from '../cat-navigation/cat-navigation.component';
+import { HeaderComponent } from '../header/header.component';
 import { ProductsComponent } from '../products/products.component';
+
 import { CategoryStoreItem } from '../category/categoryStoreItems';
 import { ProductStoreItem } from '../products/productStoreItme';
+
 import { SearchKeyword } from '../../types/searchKeyword.type';
-import { RouterOutlet } from '@angular/router';
+
+import { NavigationEnd,RouterOutlet, Router } from '@angular/router';
+import { filter } from 'rxjs';
+
 
 @Component({
   selector: 'app-home',
@@ -17,19 +21,33 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home.component.scss',
   providers: [ProductStoreItem]
 })
-
 export class HomeComponent {
-  constructor(  categoriesStoreItem: CategoryStoreItem, private productStoreItem: ProductStoreItem){
-    categoriesStoreItem.loadCategories();
-    productStoreItem.loadProducts();
-    
+  constructor(
+    private  categoriesStoreItem: CategoryStoreItem, 
+    private productStoreItem: ProductStoreItem,
+    private router: Router
+  ) {
+    this.categoriesStoreItem.loadCategories();
+    this.productStoreItem.loadProducts();
+    router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event) => {
+        if ((event as NavigationEnd).url === '/home') {
+          router.navigate(['/home/products']);
+        }
+      });
   }
 
-  onSelectCategory(categoryId: number | any): void{
-    this.productStoreItem.loadProducts('maincategoryid=' + categoryId)
+  onSelectCategory(categoryId: number): void {
+    this.productStoreItem.loadProducts('maincategoryid=' + categoryId);
   }
 
-  onSearchKeyword(searhkeyword: SearchKeyword): void{
-    this.productStoreItem.loadProducts('maincategoryid=' + searhkeyword.categoryId + '&keyword=' + searhkeyword.keyword)
+  onSearchKeyword(searchKeyword: SearchKeyword): void {
+    this.productStoreItem.loadProducts(
+      'maincategoryid=' +
+        searchKeyword.categoryId +
+        '&keyword=' +
+        searchKeyword.keyword
+    );
   }
 }

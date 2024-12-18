@@ -1,3 +1,4 @@
+import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -18,6 +19,11 @@ export const routes: Routes = [
       {
         path: 'cart',  // Corrección aquí
         loadComponent: () => import('./components/cart/cart.component').then(m => m.CartComponent),
+      }
+      ,
+      {
+        path: 'signup',  // Corrección aquí
+        loadComponent: () => import('./components/users/user-signup/user-signup.component').then(m => m.UserSignupComponent),
       }
     ]
   },
